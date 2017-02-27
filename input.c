@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 
+/* /proc/bus/input/devices */
 #define MOUSE_EVENT "/dev/input/event11"
 #define KEYBOARD_EVENT "/dev/input/event12"
 
@@ -20,6 +21,7 @@ void send_keyboard_event(struct timeval time, int type, int code, int value)
 	write(keyboardfd, &event, sizeof(event));
 }
 
+/* /usr/include/linux/input* */
 int main(void)
 {
 	struct input_event event;
@@ -42,9 +44,7 @@ int main(void)
 				//printf("EV_KEY code:%x, value:%x\n", event.code, event.value);
 				switch(event.code) {
 					case BTN_LEFT:
-							send_keyboard_event(event.time, EV_KEY, KEY_C, 1);
-							send_keyboard_event(event.time, EV_SYN, SYN_REPORT, 0);
-							send_keyboard_event(event.time, EV_KEY, KEY_C, 0);
+							send_keyboard_event(event.time, EV_KEY, KEY_C, event.value);
 							send_keyboard_event(event.time, EV_SYN, SYN_REPORT, 0);
 							break;
 				}
