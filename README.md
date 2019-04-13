@@ -1,17 +1,16 @@
 # moct
+moctはmouse remote controllerの略です.   
+無線マウスをcmusのリモコンにしたくて作ったプログラムです．
 
 ## Usage
+ソースコードのdefineのところを自分の環境に合わせて使ってください．   
+`cat /proc/bus/input/devices`で確認することが出来ます．
 
-無線マウスをcmusのリモコンにしたくて作ったプログラムです
 
-ソース読んでdefineのところを自分の環境に合わせたりしてください
+デバイスを扱うのでroot権限で実行してください．
 
-root権限で実行してください
+`make`→`make install`→`moct`で使えます．
 
-`make`して`make install`して`moct`で使えます
-
-`make uninstall`対応してます
-
-moctはmouse remote controllerの略です
+`make uninstall`にも対応しています
 
 参考URL：http://www.nakatayuki.com/archives/1061180296.html
